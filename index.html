@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visualization of C Pointers</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        function createMemoryCells(count) {
+          //const memory = document.getElementsByClassName("memory")[0];
+          const memory = document.querySelector(".memory");
+          memory.innerHTML = ""; // Clear any existing cells
+
+          for (let i = 0; i < count; i++) {
+            const cell = document.createElement("div");
+            cell.classList.add("memoryCell"); // make this part of the memoryCell class
+
+            cell.textContent = i;
+
+            memory.appendChild(cell);
+          }
+        }
+
+        createMemoryCells(10);
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Pointers visualization</h1>
+    <div id="visual-area">
+      <div class="memory">
+        <div class="memoryCell"></div>
+      </div>
+    </div>
+  </body>
+</html>

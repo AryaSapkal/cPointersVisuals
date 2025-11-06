@@ -1,0 +1,24 @@
+
+
+#visual-area {
+    display: flex;
+    justify-content: center; /*Center child (box) horizontally*/
+    align-items: center; /*Center child (box) vertically*/
+}
+
+.memory {
+    width: 80vw; /* 100% viewport width*/
+    box-sizing: border-box;
+    height: 40px;
+    border: 2px solid black;
+    padding: 1px;
+    margin:10 px;
+}
+
+.memoryCell{
+    width: 0 0 40px;
+    height: 100%;
+    box-sizing: border-box;
+    border: 1px solid black;
+    
+}
