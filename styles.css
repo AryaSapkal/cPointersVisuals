@@ -1,7 +1,7 @@
 
 
 #visual-area {
-    display: flex;
+    /* display: flex; */
     justify-content: center; /*Center child (box) horizontally*/
     align-items: center; /*Center child (box) vertically*/
 }
@@ -16,9 +16,17 @@
 }
 
 .memoryCell{
-    width: 0 0 40px;
+    display: inline-block;
+    width: 40px;
     height: 100%;
     box-sizing: border-box;
     border: 1px solid black;
     
+}
+
+.pointerNames{
+    width: 80vw;
+    height: 20px;
+    border: 1px solid black;
+
 }
