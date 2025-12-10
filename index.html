@@ -7,32 +7,57 @@
     <link rel="stylesheet" href="styles.css" />
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        function createMemoryCells(count) {
+        function createMemoryCells(count, parentMemoryBlock) {
           //const memory = document.getElementsByClassName("memory")[0];
-          const memory = document.querySelector(".memory");
-          memory.innerHTML = ""; // Clear any existing cells
+          //const memory = document.querySelector(".memory");
+          const memory = parentMemoryBlock;
+          //const memoryCell = memory.querySelectorAll(".memoryCell"); // nested class
+
+          //memory.innerHTML = "test msg"; // Clear any existing cells
+          memory.innerHTML = "";
 
           for (let i = 0; i < count; i++) {
+            // Create a cell with class memoryCell and text content of i
             const cell = document.createElement("div");
-            cell.classList.add("memoryCell"); // make this part of the memoryCell class
-
+            cell.classList.add("memoryCell");
             cell.textContent = i;
 
             memory.appendChild(cell);
           }
         }
 
-        createMemoryCells(10);
+        function createPointer(pointerName) {
+          const pointer = document.createElement("div");
+          pointer.classList.add("pointerName");
+
+          pointer.textContent = pointerName;
+        }
+
+        //function createAllMemoryCells(count) {}
+
+        createMemoryCells(10, document.querySelector("#pointers-memory-block"));
+        createMemoryCells(10, document.querySelector("#files-memory-block"));
       });
     </script>
   </head>
   <body>
-    <h1>Pointers visualization</h1>
     <div id="visual-area">
-      <div class="memory">
+      <h1>Pointers visualization</h1>
+      <div id="pointers-memory-block" class="memory">
+        <!-- <div class="memoryCell"></div> -->
         <div class="memoryCell"></div>
       </div>
+      <div class="pointerNames">
+        <div class="pointerName"></div>
+      </div>
+
+      <h1>Files in C</h1>
+      <div id="files-memory-block" class="memory">
+        <!-- <div class="memoryCell"></div> -->
+        <div class="memoryCell"></div>
+      </div>
+
+      <div id="file-visual"></div>
     </div>
-    <div class="pointerNames"></div>
   </body>
 </html>
