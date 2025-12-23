@@ -8,25 +8,59 @@
     <script src="script.js"></script>
   </head>
   <body>
+
     <div id="visual-area">
+
       <h1>Pointers visualization</h1>
       <div id="pointers-memory-block" class="memory-block"></div>
+
+      <!-- The pointer names right below the first memory block visual-->
       <div class="pointerNames">
         <div class="pointerName"></div>
       </div>
 
+
+
       <h1>Files in C</h1>
 
       <div class="memory-file-container">
-        <div id="files-memory-block" class="memory-block"></div>
+        <div id="files-memory-block-1" class="memory-block files-memory-block"></div>
+
+        <div id="pointerNames-files" class="pointerNames">
+          <div></div>
+        </div>
+
+        <div id="stdin" class="file-visual">
+          <h1>stdin</h1>
+        </div>
+
+        <div id="stdout" class="file-visual">
+          <h1>stdout</h1>
+        </div>
+
+        <div id="stderr" class="file-visual">
+          <h1>stderr</h1>
+        </div>
 
         <div id="file-visual-1" class="file-visual">
-          <p>fd=3</p>
-          <p>buffer[...]</p>
-          <p>flags</p>
+          <h1>struct</h1>
+          <p>int fd</p>
+          <p>unsigned char *buf</p>
+          <p>int flags</p>
           <p>size_t buf_size</p>
+          <p>size_t buf_pos</p>
+          <!-- <p>size_t buf_end</p> -->
         </div>
+
+
+
+
+        
+
+
       </div>
+      <div id="files-memory-block-2" class="memory-block files-memory-block"></div>
+      <div id="files-memory-block-3" class="memory-block files-memory-block"></div>
     </div>
   </body>
 </html>
