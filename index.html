@@ -12,12 +12,22 @@
     <div id="visual-area">
 
       <h1>Pointers visualization</h1>
-      <div id="pointers-memory-block" class="memory-block"></div>
+      <div id="pointers-memory-block" class="memory-block">
+
+        <div id="memory-cell-address-1" class="memory-cell-address">
+          <div id="memory-cell-1" class="memory-cell"></div>
+          <div id="memory-address-1" class="memory-address"></div>
+        </div>
+        
+      </div>
 
       <!-- The pointer names right below the first memory block visual-->
       <div class="pointerNames">
         <div class="pointerName"></div>
       </div>
+
+
+
 
 
 
@@ -49,18 +59,58 @@
           <p>int flags</p>
           <p>size_t buf_size</p>
           <p>size_t buf_pos</p>
+          <p>size_t buf_end</p>
+          <p></p>
           <!-- <p>size_t buf_end</p> -->
         </div>
 
+      </div>
+
+      <div class="memory-file-container">
+        <div id="files-memory-block-2" class="memory-block files-memory-block"></div>
+      </div>
+
+
+      <div class="memory-file-container">
+        <div id="files-memory-block-3" class="memory-block files-memory-block"></div>
+      </div>
 
 
 
+      <!-- Processes in C -->
+      <h1>Processes in C</h1>
+      <div class="process-block">
         
+        <p>#include &lt;stdio.h&gt;</p>
+        <p>#include &lt;unistd.h&gt;</p>
+        <p></p>
+        <p>int sum(int nums[], int arraySize){</p>
+        <p>&emsp;int sum = 0;</p>
+        <p>&emsp;for(int i = 0; i &lt; arraySize; i++){</p>
+        <p>&emsp;&emsp;sum += nums[i];</p>
+        <p>&emsp;}</p>
+        <p>&emsp;return sum;</p>
+        <p>}</p>
+        <p></p>
+        <p></p>
+        <p>int main(){</p>
+        <p>&emsp;int numbers1[] = {1, 2, 3, 4};</p>
+        <p>&emsp;int numbers2[] = {5, 6, 7, 8};</p>
+        <p>&emsp;int arraySize = 4;</p>
+        <p></p>
+        <p>&emsp;int forkValue = fork();</p>
+        <p></p>
+        <p>&emsp;if(forkValue == 0){</p>
+        <p>&emsp;&emsp;printf(&quot;Child&#39;s work: %d\n&quot;, sum(numbers1, arraySize));</p>
+        <p>&emsp;}</p>
+        <p>&emsp;else{</p>
+        <p>&emsp;&emsp;printf(&quot;Parent&#39;s work: %d\n&quot;, sum(numbers2, arraySize));</p>
+        <p>&emsp;}</p>
+        <p>}</p>
 
 
       </div>
-      <div id="files-memory-block-2" class="memory-block files-memory-block"></div>
-      <div id="files-memory-block-3" class="memory-block files-memory-block"></div>
+      
     </div>
   </body>
 </html>
