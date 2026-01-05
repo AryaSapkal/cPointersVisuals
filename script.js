@@ -4,7 +4,7 @@ let numMemoryCells = 15;
 
 document.addEventListener("DOMContentLoaded", () => {
   //let numMemoryCells = 10;
-
+/*
   function createMemoryCell(cellText){
     const memoryCell = document.createElement("div");
     memoryCell.classList.add("memory-cell");
@@ -26,15 +26,15 @@ document.addEventListener("DOMContentLoaded", () => {
     memoryCellAddress.innerHTML.add(createMemoryCell(cellText));
     memoryCellAddress.innerHTML.add(createMemoryAddress(addressText));
   }
-/*
-  function createMemoryCellAddresses(count, bytesBetweenEachCell){
-    const memoryCellAddresses = document.createElement("div");
-    memoryCellAddresses.classList.add("memory-cell-addresses");
 
-    for(let i = 0; i < count; i++){
+  // function createMemoryCellAddresses(count, bytesBetweenEachCell){
+  //   const memoryCellAddresses = document.createElement("div");
+  //   memoryCellAddresses.classList.add("memory-cell-addresses");
+
+  //   for(let i = 0; i < count; i++){
       
-    }
-  }*/
+  //   }
+  //}
 
   function createMemoryBlock(count, parentMemoryBlock, bytesBetweenEachCell){
     const memoryBlock = parentMemoryBlock;
@@ -93,57 +93,59 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-
+*/
 
 
   
-  //const lineOfCode = processNode.querySelector(":scope > p:first-of-type"); // Look for the first paragraph that is a direct child of this div
-  const processNode = document.getElementById("process-block-1");
-  const lineOfCode = processNode.querySelector("#temp");
-  const text = lineOfCode.firstChild;
+  
+
+  // Dynamically create ranges for all of the paragraphs in the process-block
+  let processBlock = document.getElementById("process-block-1");
+  let processBlockChildElements = processBlock.querySelectorAll("p");
+
+
+
+  function incrementHighlightedLine(childElements, index){
+
+    if(index < childElements.length){
+      //const childElementsList = processBlock.querySelectorAll("p");
+      const element = childElements.item(index);
+      const textNode = element.firstChild;
+      //const textNode = element[0];
+
+      if(textNode !== null){
+        const range = document.createRange();
+        range.setStart(textNode, 0);
+        range.setEnd(textNode, textNode.length);
+
+        const highlight = new Highlight(range);
+        CSS.highlights.set("highlight-1", highlight);
+
+        
+        setTimeout(() => {
+          CSS.highlights.delete("highlight-1");
+        }, 500);
+
+        // Recursively call the highlight function for the next text node for precise and flexible control for showing processes
+        setTimeout(() => {
+          incrementHighlightedLine(childElements, index+1);
+        }, 500);
+        
+      }
+      else{
+        incrementHighlightedLine(childElements, index+1);
+      }
+      
+    }
+
+  }
+
+
+  incrementHighlightedLine(processBlockChildElements, 0);
 
   if(!CSS.highlights){
     lineOfCode.textContent = "The CSS custom highlight api is not supported in this browser."
   }
   
-  const range = new Range();
-
-  range.setStart(text, 0);
-  range.setEnd(text, text.length);
-
-
-  const highlight = new Highlight(range);
-
-  CSS.highlights.set("highlight-1", highlight); // highlight-1 is a custom identifier of highlight that can be used in CSS
-
-
-
-
   
-
-
-
-
-
-
-
-
-  createMemoryBlock(numMemoryCells, document.querySelector("#pointers-memory-block"), 1);
-
-  /*createMemoryCells(
-    numMemoryCells,
-    document.querySelector("#pointers-memory-block"), 1
-  );*/
-  createMemoryCellsAll(
-    numMemoryCells,
-    document.querySelectorAll(".files-memory-block"), 4
-  );
-
-  // createMemoryCells(
-  //   numMemoryCells,
-  //   document.querySelector("#files-memory-block"), 1
-  // );
-
-
-  // next: create a createMemoryCellsAll function that inserts the same amount of memory cells in each memory block on the page
 });
